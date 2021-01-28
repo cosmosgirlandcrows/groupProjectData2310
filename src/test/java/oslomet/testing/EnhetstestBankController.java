@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class EnhetstestBankController {
 
+
     @InjectMocks
     // denne skal testes
     private BankController bankController;
