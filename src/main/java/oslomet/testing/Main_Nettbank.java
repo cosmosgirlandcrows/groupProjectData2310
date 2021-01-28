@@ -11,3 +11,6 @@ public class Main_Nettbank {
     }
 
 }
+
+/* Hello world! */
+
