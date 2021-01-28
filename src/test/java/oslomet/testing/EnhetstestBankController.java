@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import oslomet.testing.API.BankController;
 import oslomet.testing.DAL.BankRepository;
@@ -43,9 +44,9 @@ public class EnhetstestBankController {
                 "Lene", "Jensen", "Askerveien 22", "3270",
                 "Asker", "22224444", "HeiHei");
 
-        when(sjekk.loggetInn()).thenReturn("01010110523");
+        Mockito.when(sjekk.loggetInn()).thenReturn("01010110523");
 
-        when(repository.hentKundeInfo(anyString())).thenReturn(enKunde);
+        Mockito.when(repository.hentKundeInfo(anyString())).thenReturn(enKunde);
 
         // act
         Kunde resultat = bankController.hentKundeInfo();
