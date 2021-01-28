@@ -2,7 +2,11 @@
 
 Rosa Berg - s344236
 
+<<<<<<< HEAD
 Ida Ness - s344233
+=======
+Ida Ness -
+>>>>>>> origin/master
 
 Floyd Nicklas Moen -
 
