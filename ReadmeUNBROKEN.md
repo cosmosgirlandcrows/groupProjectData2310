@@ -4,6 +4,6 @@ Rosa Berg - s344236
 
 Ida Ness -
 
-Floyd Nicklas Moen -
+Floyd Nicklas Moen - s344227
 
 Sofia Sandø Harveit - 
