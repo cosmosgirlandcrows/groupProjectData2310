@@ -2,7 +2,7 @@
 
 Rosa Berg - s344236
 
-Ida Ness -
+Ida Ness - s344233
 
 Floyd Nicklas Moen - s344227
 
