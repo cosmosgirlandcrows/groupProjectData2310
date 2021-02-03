@@ -6,4 +6,4 @@ Ida Ness - s344233
 
 Floyd Nicklas Moen - s344227
 
-Sofia Sandø Harveit - 
+Sofia Sandø Harveit - s344174
