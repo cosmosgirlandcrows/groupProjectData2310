@@ -10,6 +10,7 @@ import oslomet.testing.API.BankController;
 import oslomet.testing.DAL.BankRepository;
 import oslomet.testing.Models.Konto;
 import oslomet.testing.Models.Kunde;
+import oslomet.testing.Models.Transaksjon;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
 import java.util.ArrayList;
@@ -27,6 +28,54 @@ public class EnhetstestBankController {
     @InjectMocks
     // denne skal testes
     private BankController bankController;
+
+    @Test
+    public void testBankController_hentTransaksjoner() {
+
+        //We initially start with making two transactions to attach to our mock dummy
+
+        Transaksjon t1 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei :)", "test", "accountnr2");
+        Transaksjon t2 = new Transaksjon(113, "test", 4.5, "2013-03-25", "Hei :)", "test", "accountnr2");
+
+        //We need a list to be able to attach them to the account as all transactions are in a list!
+        List<Transaksjon> transList = new ArrayList<Transaksjon>();
+
+
+        transList.add(t1);
+        transList.add(t2);
+
+        //this is an account, a mock account that has the transactions in the list attached to it. Cool!
+
+        Konto k1 = new Konto("a", "b", 600.00, "type", "nok", transList);
+
+        //We check for a logged in account. If we don't do this, it won't work because we'd be dealing with a null situation
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+
+        //I'm not 100% sure what this does. needs to be linked to the thing you're testing, and the dummy object you made to see if its valid I guess?
+
+            //Why?
+        when(repository.hentTransaksjoner(anyString(),anyString(), anyString())).thenReturn(k1);
+
+        //Here we make a Konto object for the result of the hentTransaksjoner in the Controller. Why does a method called
+            //"getTransactions" want a Konto object to return instead of a list of transactions? lmao who knows
+        Konto resultat = bankController.hentTransaksjoner("01010110523", "2000-01-01", "2020-01-01");
+
+        //k1 doesn't contain actual transactions, we're just checking if the structure is the same I think
+        assertEquals(k1.getTransaksjoner(), resultat.getTransaksjoner());
+
+    }
+    @Test
+    public void testBankController_hentTransaksjoner_loggUt() {
+
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        Konto resultat = bankController.hentTransaksjoner("01010110523", "2000-01-01", "2020-01-01");
+
+        assertNull(resultat);
+
+    }
+
 
     @Mock
     // denne skal Mock'es
