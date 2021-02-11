@@ -246,6 +246,28 @@ public class EnhetstestBankController {
         // assert
         assertNull(resultat);
     }
+
+
+    @Test
+    public void endre_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void endre_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
 }
 
 
