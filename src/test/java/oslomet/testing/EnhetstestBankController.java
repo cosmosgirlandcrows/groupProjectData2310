@@ -63,19 +63,20 @@ public class EnhetstestBankController {
 
         //I'm not 100% sure what this does. needs to be linked to the thing you're testing, and the dummy object you made to see if its valid I guess?
 
-            //Why?
-        when(repository.hentTransaksjoner(anyString(),anyString(), anyString())).thenReturn(k1);
+        //Why?
+        when(repository.hentTransaksjoner(anyString(), anyString(), anyString())).thenReturn(k1);
 
         //Here we make a Konto object for the result of the hentTransaksjoner in the Controller. Why does a method called
-            //"getTransactions" want a Konto object to return instead of a list of transactions? lmao who knows
+        //"getTransactions" want a Konto object to return instead of a list of transactions? lmao who knows
         Konto resultat = bankController.hentTransaksjoner("01010110523", "2000-01-01", "2020-01-01");
 
         //k1 doesn't contain actual transactions, we're just checking if the structure is the same I think
         assertEquals(k1.getTransaksjoner(), resultat.getTransaksjoner());
 
     }
+
     @Test
-    public void testBankController_hentTransaksjoner_loggetUt() {
+    public void testBankController_hentTransaksjoner_ikkeLoggetInn() {
 
         when(sjekk.loggetInn()).thenReturn(null);
 
@@ -87,21 +88,129 @@ public class EnhetstestBankController {
 
 
 
+    @Test
+    public void hentKonti_LoggetInn() {
+        // arrange
+        List<Konto> konti = new ArrayList<>();
+        Konto konto1 = new Konto("105010123456", "01010110523",
+                720, "Lønnskonto", "NOK", null);
+        Konto konto2 = new Konto("105010123456", "12345678901",
+                1000, "Lønnskonto", "NOK", null);
+        konti.add(konto1);
+        konti.add(konto2);
+
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.hentKonti(anyString())).thenReturn(konti);
+
+        // act
+        List<Konto> resultat = bankController.hentKonti();
+
+        // assert
+        assertEquals(konti, resultat);
+    }
 
     @Test
-    public void hentTransaksjoner_loggetInn(){
+    public void hentKonti_IkkeLoggetInn() {
+        // arrange
+
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        // act
+        List<Konto> resultat = bankController.hentKonti();
+
+        // assert
+        assertNull(resultat);
+    }
+
+    @Test
+    public void hentSaldi_loggetInn() {
         // arrange
 
         // act
 
         // assert
 
+    }
+
+
+    @Test
+    public void hentSaldi_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
 
     }
 
-    @Test
-    public void
 
+    @Test
+    public void registrerBetaling_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void registrerBetaling_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+
+    @Test
+    public void hentBetalinger_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void hentBetalinger_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+
+    @Test
+    public void utforBetaling_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void utforBetaling_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
 
 
 
@@ -137,42 +246,9 @@ public class EnhetstestBankController {
         // assert
         assertNull(resultat);
     }
-
-    @Test
-    public void hentKonti_LoggetInn()  {
-        // arrange
-        List<Konto> konti = new ArrayList<>();
-        Konto konto1 = new Konto("105010123456", "01010110523",
-                720, "Lønnskonto", "NOK", null);
-        Konto konto2 = new Konto("105010123456", "12345678901",
-                1000, "Lønnskonto", "NOK", null);
-        konti.add(konto1);
-        konti.add(konto2);
-
-        when(sjekk.loggetInn()).thenReturn("01010110523");
-
-        when(repository.hentKonti(anyString())).thenReturn(konti);
-
-        // act
-        List<Konto> resultat = bankController.hentKonti();
-
-        // assert
-        assertEquals(konti, resultat);
-    }
-
-    @Test
-    public void hentKonti_IkkeLoggetInn()  {
-        // arrange
-
-        when(sjekk.loggetInn()).thenReturn(null);
-
-        // act
-        List<Konto> resultat = bankController.hentKonti();
-
-        // assert
-        assertNull(resultat);
-    }
 }
+
+
 
 
 
