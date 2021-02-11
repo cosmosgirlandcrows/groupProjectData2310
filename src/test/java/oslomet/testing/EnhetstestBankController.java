@@ -123,6 +123,7 @@ public class EnhetstestBankController {
         assertNull(resultat);
     }
 
+    //Floyd
     @Test
     public void hentSaldi_loggetInn() {
         // arrange
@@ -135,7 +136,7 @@ public class EnhetstestBankController {
 
     }
 
-
+    //Floyd
     @Test
     public void hentSaldi_ikkeLoggetInn() {
         // arrange
@@ -147,6 +148,7 @@ public class EnhetstestBankController {
     }
 
 
+    //Rosa
     @Test
     public void registrerBetaling_loggetInn() {
         // arrange
@@ -157,7 +159,7 @@ public class EnhetstestBankController {
 
     }
 
-
+    //Rosa
     @Test
     public void registrerBetaling_ikkeLoggetInn() {
         // arrange
@@ -170,6 +172,7 @@ public class EnhetstestBankController {
 
 
 
+    //Ida og sofia
     @Test
     public void hentBetalinger_loggetInn() {
         // arrange
@@ -181,6 +184,8 @@ public class EnhetstestBankController {
     }
 
 
+
+    //Ida og sofia
     @Test
     public void hentBetalinger_ikkeLoggetInn() {
         // arrange
@@ -193,6 +198,7 @@ public class EnhetstestBankController {
 
 
 
+    //Ida og sofia
     @Test
     public void utforBetaling_loggetInn() {
         // arrange
@@ -204,6 +210,7 @@ public class EnhetstestBankController {
     }
 
 
+    //Ida og sofia
     @Test
     public void utforBetaling_ikkeLoggetInn() {
         // arrange
@@ -250,6 +257,7 @@ public class EnhetstestBankController {
     }
 
 
+    //Rosa
     @Test
     public void endre_loggetInn() {
         // arrange
@@ -261,6 +269,7 @@ public class EnhetstestBankController {
     }
 
 
+    //Rosa
     @Test
     public void endre_ikkeLoggetInn() {
         // arrange
