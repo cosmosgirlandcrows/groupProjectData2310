@@ -13,6 +13,7 @@ import oslomet.testing.Models.Kunde;
 import oslomet.testing.Models.Transaksjon;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
+import javax.imageio.plugins.jpeg.JPEGImageReadParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class EnhetstestBankController {
         Transaksjon t2 = new Transaksjon(113, "test", 4.5, "2013-03-25", "Hei :)", "test", "accountnr2");
 
         //We need a list to be able to attach them to the account as all transactions are in a list!
-        List<Transaksjon> transList = new ArrayList<Transaksjon>();
+        List<Transaksjon> transList = new ArrayList<>();
 
 
         transList.add(t1);
@@ -127,12 +128,27 @@ public class EnhetstestBankController {
     @Test
     public void hentSaldi_loggetInn() {
         // arrange
+        List<Konto> saldi = new ArrayList<>();
+        Konto saldo1 = new Konto("105010123456", "01010110523",
+                720, "Lønnskonto", "NOK", null);
+        Konto saldo2 = new Konto("105010123456", "12345678901",
+                1000, "Lønnskonto", "NOK", null);
+        saldi.add(saldo1);
+        saldi.add(saldo2);
+
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.hentSaldi(anyString())).thenReturn(saldi);
 
         // act
+        List<Konto> resultat = bankController.hentSaldi();
+
 
         // assert
 
-        //Hello :)
+        assertEquals(saldi, resultat);
+
+
 
     }
 
@@ -140,10 +156,14 @@ public class EnhetstestBankController {
     @Test
     public void hentSaldi_ikkeLoggetInn() {
         // arrange
+        when(sjekk.loggetInn()).thenReturn(null);
 
         // act
+        List<Konto> resultat = bankController.hentSaldi();
 
         // assert
+
+        assertNull(resultat);
 
     }
 
@@ -224,6 +244,8 @@ public class EnhetstestBankController {
 
 
 
+    //DONE!!
+
     @Test
     public void hentKundeInfo_loggetInn() {
 
@@ -242,6 +264,9 @@ public class EnhetstestBankController {
         // assert
         assertEquals(enKunde, resultat);
     }
+
+    //DONE!!
+
 
     @Test
     public void hentKundeInfo_IkkeloggetInn() {
