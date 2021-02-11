@@ -29,8 +29,17 @@ public class EnhetstestBankController {
     // denne skal testes
     private BankController bankController;
 
+    @Mock
+    // denne skal Mock'es
+    private BankRepository repository;
+
+    @Mock
+    // denne skal Mock'es
+    private Sikkerhet sjekk;
+
+
     @Test
-    public void testBankController_hentTransaksjoner() {
+    public void testBankController_hentTransaksjoner_loggetInn() {
 
         //We initially start with making two transactions to attach to our mock dummy
 
@@ -66,7 +75,7 @@ public class EnhetstestBankController {
 
     }
     @Test
-    public void testBankController_hentTransaksjoner_loggUt() {
+    public void testBankController_hentTransaksjoner_loggetUt() {
 
         when(sjekk.loggetInn()).thenReturn(null);
 
@@ -77,13 +86,25 @@ public class EnhetstestBankController {
     }
 
 
-    @Mock
-    // denne skal Mock'es
-    private BankRepository repository;
 
-    @Mock
-    // denne skal Mock'es
-    private Sikkerhet sjekk;
+
+    @Test
+    public void hentTransaksjoner_loggetInn(){
+        // arrange
+
+        // act
+
+        // assert
+
+
+    }
+
+    @Test
+    public void
+
+
+
+
 
     @Test
     public void hentKundeInfo_loggetInn() {
@@ -152,4 +173,6 @@ public class EnhetstestBankController {
         assertNull(resultat);
     }
 }
+
+
 
