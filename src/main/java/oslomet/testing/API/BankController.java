@@ -59,6 +59,7 @@ public class BankController {
         return null;
     }
 
+
     @GetMapping("/hentBetalinger")
     public List<Transaksjon> hentBetalinger() {
         String personnummer = sjekk.loggetInn();

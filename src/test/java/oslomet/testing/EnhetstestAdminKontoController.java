@@ -1,17 +1,14 @@
 package oslomet.testing;
 
-package oslomet.testing;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.web.bind.annotation.RequestBody;
 import oslomet.testing.API.AdminKontoController;
-import oslomet.testing.API.BankController;
 import oslomet.testing.DAL.AdminRepository;
-import oslomet.testing.DAL.BankRepository;
 import oslomet.testing.Models.Konto;
 import oslomet.testing.Models.Kunde;
 import oslomet.testing.Models.Transaksjon;
@@ -56,44 +53,41 @@ public class EnhetstestAdminKontoController {
 
         when(sjekk.loggetInn()).thenReturn("01010110523");
 
-        when(repository.hentAlleKonti(anyString())).thenReturn(konti);
+        when(repository.hentAlleKonti()).thenReturn(konti);
 
+        List<Konto> resultat = adminKontoController.hentAlleKonti();
 
+        assertEquals(konti, resultat);
 }
 
-
-/*    @Test
-    public void hentKonti_LoggetInn() {
-        // arrange
-        List<Konto> konti = new ArrayList<>();
-        Konto konto1 = new Konto("105010123456", "01010110523",
-                720, "Lønnskonto", "NOK", null);
-        Konto konto2 = new Konto("105010123456", "12345678901",
-                1000, "Lønnskonto", "NOK", null);
-        konti.add(konto1);
-        konti.add(konto2);
-
-        when(sjekk.loggetInn()).thenReturn("01010110523");
-
-        when(repository.hentKonti(anyString())).thenReturn(konti);
-
-        // act
-        List<Konto> resultat = bankController.hentKonti();
-
-        // assert
-        assertEquals(konti, resultat);
-    }
-
     @Test
-    public void hentKonti_IkkeLoggetInn() {
-        // arrange
+    public void hentAlle_IkkeLoggetInn() {
 
         when(sjekk.loggetInn()).thenReturn(null);
 
+        List<Konto> resultat = adminKontoController.hentAlleKonti();
+
+        assertNull(resultat);
+    }
+
+    // Denne prøvde vi oss på (Ida og Sofia), men dette er feil:(
+  /*  @Test
+    public void registrer_loggetInn() {
+
+        // arrange
+        Konto enKonto = new Konto();
+
+        Mockito.when(sjekk.loggetInn()).thenReturn("12345678901");
+
+        Mockito.when(repository.registrerKonto(anyString(), anyString())).thenReturn(enKonto);
+
         // act
-        List<Konto> resultat = bankController.hentKonti();
+        Kunde resultat = adminKontoController.registrerKonto(@RequestBody);
 
         // assert
-        assertNull(resultat);
-    } */
+        assertEquals(enKonto, resultat);
+    }*/
+
+
+
 }
