@@ -40,7 +40,7 @@ public class EnhetstestAdminKontoController {
     // denne skal Mock'es
     private Sikkerhet sjekk;
 
-
+    // Ida og Sofia: Vi tror denne er riktig
     @Test
     public void testAdminKontoController_hentAlle_loggetInn() {
         List<Konto> konti = new ArrayList<>();
@@ -59,7 +59,7 @@ public class EnhetstestAdminKontoController {
 
         assertEquals(konti, resultat);
 }
-
+    // Ida og Sofia: Vi tror denne også er riktig
     @Test
     public void hentAlle_IkkeLoggetInn() {
 
