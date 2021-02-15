@@ -19,6 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -191,57 +192,77 @@ public class EnhetstestBankController {
     }
 
 
+// Her er koden til Ida og Sofia
 
     //Ida og sofia
     @Test
     public void hentBetalinger_loggetInn() {
-        // arrange
+        List<Transaksjon> betaling = new ArrayList<>();
+        Transaksjon betaling1 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei :)", "test", "accountnr2");
+        Transaksjon betaling2 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei :)", "test", "accountnr2");
 
-        // act
+        betaling.add(betaling1);
+        betaling.add(betaling2);
 
-        // assert
+        when(sjekk.loggetInn()).thenReturn("01010110523");
 
+        when(repository.hentBetalinger(anyString())).thenReturn(betaling);
+
+        List<Transaksjon> resultat = bankController.hentBetalinger();
+
+        assertEquals(betaling, resultat);
     }
-
-
 
     //Ida og sofia
     @Test
     public void hentBetalinger_ikkeLoggetInn() {
-        // arrange
+        when(sjekk.loggetInn()).thenReturn(null);
 
-        // act
+        List<Transaksjon> resultat = bankController.hentBetalinger();
 
-        // assert
-
+        assertNull(resultat);
     }
-
 
 
     //Ida og sofia
     @Test
-    public void utforBetaling_loggetInn() {
-        // arrange
+    public void utforBetaling_loggetInn(/*int txID*/) {
+        List<Transaksjon> betaling = new ArrayList<>();
+        Transaksjon betaling1 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei", "test", "accountnr2");
+        Transaksjon betaling2 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei", "test", "accountnr2");
 
-        // act
+        //List<Konto> kbetaling = new ArrayList<>();
+        //Konto kbetaling1 = new Konto();
+        //Konto kbetaling2 = new Konto();
 
-        // assert
+        betaling.add(betaling1);
+        betaling.add(betaling2);
+        //kbetaling.add(kbetaling1);
+        //kbetaling.add(kbetaling2);
 
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+        //when(sjekk.loggetInn()).thenReturn("105010123456");
+
+        when(repository.hentBetalinger(anyString())).thenReturn(betaling);
+
+        when(repository.utforBetaling(anyInt())).thenReturn("OK");
+
+        List<Transaksjon> resultat = bankController.hentBetalinger();
+        //List<Konto> resultat2 = bankController.utforBetaling(113);
+
+        assertEquals(betaling, resultat);
     }
 
 
     //Ida og sofia
     @Test
     public void utforBetaling_ikkeLoggetInn() {
-        // arrange
+        when(sjekk.loggetInn()).thenReturn(null);
 
-        // act
+        List<Transaksjon> resultat = bankController.utforBetaling(113);
 
-        // assert
-
+        assertNull(resultat);
     }
-
-
 
 
     //DONE!!
