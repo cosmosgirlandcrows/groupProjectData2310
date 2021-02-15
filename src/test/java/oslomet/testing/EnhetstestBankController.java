@@ -226,29 +226,22 @@ public class EnhetstestBankController {
 
     //Ida og sofia
     @Test
-    public void utforBetaling_loggetInn(/*int txID*/) {
+    public void utforBetaling_loggetInn() {
         List<Transaksjon> betaling = new ArrayList<>();
         Transaksjon betaling1 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei", "test", "accountnr2");
         Transaksjon betaling2 = new Transaksjon(113, "test", 4.5, "2013-03-21", "Hei", "test", "accountnr2");
 
-        //List<Konto> kbetaling = new ArrayList<>();
-        //Konto kbetaling1 = new Konto();
-        //Konto kbetaling2 = new Konto();
 
         betaling.add(betaling1);
         betaling.add(betaling2);
-        //kbetaling.add(kbetaling1);
-        //kbetaling.add(kbetaling2);
 
         when(sjekk.loggetInn()).thenReturn("01010110523");
-        //when(sjekk.loggetInn()).thenReturn("105010123456");
 
         when(repository.hentBetalinger(anyString())).thenReturn(betaling);
 
         when(repository.utforBetaling(anyInt())).thenReturn("OK");
 
         List<Transaksjon> resultat = bankController.hentBetalinger();
-        //List<Konto> resultat2 = bankController.utforBetaling(113);
 
         assertEquals(betaling, resultat);
     }
