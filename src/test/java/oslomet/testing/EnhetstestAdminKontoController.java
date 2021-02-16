@@ -72,7 +72,7 @@ public class EnhetstestAdminKontoController {
 
     // Denne prøvde vi oss på (Ida og Sofia), men dette er feil:(
   /*  @Test
-    public void registrer_loggetInn() {
+    public void registrerKonto_loggetInn() {
 
         // arrange
         Konto enKonto = new Konto();

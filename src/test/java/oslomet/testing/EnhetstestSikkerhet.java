@@ -1,46 +1,53 @@
 package oslomet.testing;
 
+//Domain of Rosa
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-import oslomet.testing.API.BankController;
-import oslomet.testing.DAL.BankRepository;
-import oslomet.testing.Models.Konto;
-import oslomet.testing.Models.Kunde;
-import oslomet.testing.Models.Transaksjon;
-import oslomet.testing.Sikkerhet.Sikkerhet;
 
-import javax.imageio.plugins.jpeg.JPEGImageReadParam;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-
-@RunWith(MockitoJUnitRunner.class)
 public class EnhetstestSikkerhet {
 
+    @Test
+    public void testsjekkLoggInn() {
+        // arrange
 
-    @InjectMocks
-    // denne skal testes
-    private BankController bankController;
+        // act
 
-    @Mock
-    // denne skal Mock'es
-    private BankRepository repository;
+        // assert
 
-    @Mock
-    // denne skal Mock'es
-    private Sikkerhet sjekk;
+    }
+
+    @Test
+    public void testloggUt(){
+
+        // arrange
+
+        // act
+
+        // assert
 
 
+    }
+
+    @Test
+    public void testloggInnAdmin(){
+
+        // arrange
+
+        // act
+
+        // assert
 
 
+    }
 
+    @Test
+    public void testloggetInn(){
+
+        // arrange
+
+        // act
+
+        // assert
+
+    }
 }
