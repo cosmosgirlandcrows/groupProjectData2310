@@ -67,8 +67,11 @@ public class EnhetstestAdminKundeController {
         assertNull(resultat);
     }
 
+    //
+
     @Test
-    public void lagre_loggetInn() {
+    public void lagreKunde_loggetInn() {
+
         // arrange
 
         // act
@@ -78,7 +81,7 @@ public class EnhetstestAdminKundeController {
     }
 
     @Test
-    public void lagre_ikkeLoggetInn() {
+    public void lagreKunde_ikkeLoggetInn() {
         // arrange
 
         // act
@@ -90,6 +93,7 @@ public class EnhetstestAdminKundeController {
     @Test
     public void endre_loggetInn() {
         // arrange
+
 
         // act
 
@@ -135,33 +139,11 @@ public class EnhetstestAdminKundeController {
         String resultat = adminKundeController.slett("01010110523");
 
         // assert
-        assertThrows();
+        assertEquals("OK", resultat);
     }
 
 
 
-  /*  @Test
-    public void slett_loggetInn() {
-        // arrange
-        List<> slett = new ArrayList<>();
-        Konto slett1 = new Konto();
-        Konto slett2 = new Konto();
-
-        slett.add(slett1);
-        slett.add(slett2);
-
-        when(sjekk.loggetInn()).thenReturn("01010110523");
-
-        when(repository.slettKunde(anyString())).thenReturn("01010110523");
-
-        List<Konto> resultat = adminKundeController.slett("105010123456");
-
-
-        // act
-
-        // assert
-
-    } */
 
     @Test
     public void slett_ikkeLoggetInn() {
