@@ -1,27 +1,20 @@
 package oslomet.testing;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.Any;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.web.bind.annotation.RequestBody;
 import oslomet.testing.API.AdminKundeController;
 import oslomet.testing.DAL.AdminRepository;
-import oslomet.testing.Models.Konto;
 import oslomet.testing.Models.Kunde;
-import oslomet.testing.Models.Transaksjon;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
-import javax.imageio.plugins.jpeg.JPEGImageReadParam;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -29,18 +22,14 @@ import static org.mockito.Mockito.when;
 public class EnhetstestAdminKundeController {
 
     @InjectMocks
-    // denne skal testes
     private AdminKundeController adminKundeController;
 
     @Mock
-    // denne skal Mock'es
     private AdminRepository repository;
 
     @Mock
-    // denne skal Mock'es
     private Sikkerhet sjekk;
 
-    // Ida og Sofia: Vi tror denne er riktig
     @Test
     public void testAdminKontoController_hentAlle_loggetInn() {
         List<Kunde> kunde = new ArrayList<>();
@@ -57,7 +46,7 @@ public class EnhetstestAdminKundeController {
 
         assertEquals(kunde, resultat);
     }
-    
+
     @Test
     public void hentAlle_IkkeLoggetInn() {
 
@@ -79,10 +68,8 @@ public class EnhetstestAdminKundeController {
 
         Mockito.when(repository.registrerKunde(enKunde)).thenReturn("OK");
 
-        // act
         String resultat = adminKundeController.lagreKunde(enKunde);
 
-        // assert
         assertEquals("OK", resultat);
     }
 
@@ -106,10 +93,8 @@ public class EnhetstestAdminKundeController {
 
         Mockito.when(repository.endreKundeInfo(enKunde)).thenReturn("OK");
 
-        // act
         String resultat = adminKundeController.endre(enKunde);
 
-        // assert
         assertEquals("OK", resultat);
     }
 
@@ -122,12 +107,10 @@ public class EnhetstestAdminKundeController {
 
         assertEquals("Ikke logget inn", resultat);
     }
-
-
+    
     @Test
     public void slett_loggetInn() {
 
-        // arrange
         Kunde enKunde = new Kunde("01010110523",
                 "Lene", "Jensen", "Askerveien 22", "3270",
                 "Asker", "22224444", "HeiHei");
@@ -136,10 +119,8 @@ public class EnhetstestAdminKundeController {
 
         Mockito.when(repository.slettKunde(anyString())).thenReturn("OK");
 
-        // act
         String resultat = adminKundeController.slett("01010110523");
 
-        // assert
         assertEquals("OK", resultat);
     }
 
