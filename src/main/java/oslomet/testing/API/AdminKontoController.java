@@ -8,6 +8,8 @@ import oslomet.testing.Sikkerhet.Sikkerhet;
 
 import java.util.List;
 
+//Floyd does this
+
 @RestController
 @RequestMapping("/adminKonto")
 public class AdminKontoController {
