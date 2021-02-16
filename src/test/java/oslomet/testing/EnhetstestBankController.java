@@ -317,9 +317,21 @@ public class EnhetstestBankController {
     public void endre_loggetInn() {
         // arrange
 
+        Kunde enKunde = new Kunde("01010110523",
+                "Lene", "Jensen", "Askerveien 22", "3270",
+                "Asker", "22224444", "HeiHei");
+
+
         // act
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.endreKundeInfo(enKunde)).thenReturn("OK");
+
+        String result = bankController.endre(enKunde);
 
         // assert
+
+        assertEquals("OK", result);
 
     }
 
@@ -328,10 +340,16 @@ public class EnhetstestBankController {
     @Test
     public void endre_ikkeLoggetInn() {
         // arrange
+        Kunde enKunde = new Kunde("01010110523",
+                "Lene", "Jensen", "Askerveien 22", "3270",
+                "Asker", "22224444", "HeiHei");
+        when(sjekk.loggetInn()).thenReturn(null);
 
-        // act
+        //act
+        String resultat = bankController.endre(enKunde);
 
         // assert
+        assertNull(resultat);
 
     }
 }
