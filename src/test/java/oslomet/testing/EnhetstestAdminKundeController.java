@@ -67,8 +67,11 @@ public class EnhetstestAdminKundeController {
         assertNull(resultat);
     }
 
+    //
+
     @Test
-    public void lagre_loggetInn() {
+    public void lagreKunde_loggetInn() {
+
         // arrange
 
         // act
@@ -78,7 +81,7 @@ public class EnhetstestAdminKundeController {
     }
 
     @Test
-    public void lagre_ikkeLoggetInn() {
+    public void lagreKunde_ikkeLoggetInn() {
         // arrange
 
         // act

@@ -89,5 +89,71 @@ public class EnhetstestAdminKontoController {
     }*/
 
 
+    //registrerKonto
 
-}
+
+    @Test
+    public void registrerKonto_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void registrerKonto_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void endreKonto_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    @Test
+    public void endreKonto_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+    @Test
+    public void slettKonto_loggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+    @Test
+    public void slettKonto_ikkeLoggetInn() {
+        // arrange
+
+        // act
+
+        // assert
+
+    }
+
+
+    }
