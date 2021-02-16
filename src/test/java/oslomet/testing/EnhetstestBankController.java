@@ -130,6 +130,7 @@ public class EnhetstestBankController {
     public void hentSaldi_loggetInn() {
         // arrange
         List<Konto> saldi = new ArrayList<>();
+
         Konto saldo1 = new Konto("105010123456", "01010110523",
                 720, "Lønnskonto", "NOK", null);
         Konto saldo2 = new Konto("105010123456", "12345678901",
@@ -172,11 +173,22 @@ public class EnhetstestBankController {
     //Rosa
     @Test
     public void registrerBetaling_loggetInn() {
+
+
         // arrange
 
+        //   public Transaksjon(int txID, String fraTilKontonummer, double belop, String dato, String melding, String avventer, String kontonummer)
+        Transaksjon testTransacc = new Transaksjon(123,"thisacc", 13.37, "2017-05-29","test", "1","thatacc");
         // act
 
+        when(sjekk.loggetInn()).thenReturn("01010110523");
+
+        when(repository.registrerBetaling(testTransacc)).thenReturn("OK");
+
+        String resultat = bankController.registrerBetaling(testTransacc);
+
         // assert
+        assertEquals("OK", resultat);
 
     }
 
@@ -184,11 +196,15 @@ public class EnhetstestBankController {
     @Test
     public void registrerBetaling_ikkeLoggetInn() {
         // arrange
+        when(sjekk.loggetInn()).thenReturn(null);
 
         // act
+        Transaksjon testTransacc = new Transaksjon(123,"thisacc", 13.37, "2017-05-29","test", "1","thatacc");
+
+        String resultat = repository.registrerBetaling(testTransacc);
 
         // assert
-
+        assertNull(resultat);
     }
 
 
