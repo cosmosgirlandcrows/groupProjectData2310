@@ -119,7 +119,7 @@ public class EnhetstestAdminKundeController {
      */
 
     // Vi prøvde denne, men denne er også feil:(
-   /* @Test
+    @Test
     public void slett_loggetInn() {
 
         // arrange
@@ -136,7 +136,7 @@ public class EnhetstestAdminKundeController {
 
         // assert
         assertThrows();
-    } */
+    }
 
 
 
