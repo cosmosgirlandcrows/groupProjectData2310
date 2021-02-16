@@ -143,17 +143,15 @@ public class EnhetstestAdminKundeController {
     }
 
 
-
-
     @Test
     public void slett_ikkeLoggetInn() {
-        // arrange
 
-        // act
+        when(sjekk.loggetInn()).thenReturn(null);
 
-        // assert
+        String resultat = adminKundeController.slett("01010110523");
 
-
+        assertEquals("Ikke logget inn", resultat);
     }
-
 }
+
+
