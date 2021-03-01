@@ -102,7 +102,7 @@ public class EnhetstestAdminKontoController {
                 1000, "Lønnskonto", "NOK", null);
 
 
-        Mockito.when(sjekk.loggetInn()).thenReturn("01010110523");
+        Mockito.when(sjekk.loggetInn()).thenReturn("01010110522");
 
         Mockito.when(repository.endreKonto(enKonto)).thenReturn("OK");
 
