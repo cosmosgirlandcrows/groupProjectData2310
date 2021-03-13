@@ -107,7 +107,7 @@ public class EnhetstestAdminKundeController {
 
         assertEquals("Ikke logget inn", resultat);
     }
-    
+
     @Test
     public void slett_loggetInn() {
 
