@@ -41,6 +41,7 @@ public class Sikkerhet {
     @GetMapping("/loggUt")
     public void loggUt() {
         session.setAttribute("Innlogget", null);
+
     }
 
     @GetMapping("/loggInnAdmin")

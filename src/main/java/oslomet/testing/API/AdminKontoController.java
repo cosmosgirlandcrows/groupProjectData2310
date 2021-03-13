@@ -9,7 +9,6 @@ import oslomet.testing.Sikkerhet.Sikkerhet;
 import javax.sql.DataSource;
 import java.util.List;
 
-//Floyd does this
 
 @RestController
 @RequestMapping("/adminKonto")

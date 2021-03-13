@@ -36,7 +36,7 @@ $(function(){
                 "<td>"+betaling.dato+"</td>" +
                 "<td>"+betaling.belop.toFixed(2)+"</td>" +
                 "<td>"+betaling.melding+"</td>" +
-                "<td><button class='btn btn-success' data-txid='"+betaling.txID+"'>Utfør betaling</button></td></tr>";
+                "<td><button class='btn btn-success' data-txid='"+betaling.txID+"'>Utfor betaling</button></td></tr>";
         });
         tabell +="</tbody></table>";
         return tabell;
