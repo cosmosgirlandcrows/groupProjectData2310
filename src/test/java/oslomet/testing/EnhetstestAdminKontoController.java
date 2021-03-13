@@ -41,6 +41,7 @@ public class EnhetstestAdminKontoController {
     private Sikkerhet sjekk;
 
     // Ida og Sofia: Vi tror denne er riktig
+
     @Test
     public void testAdminKontoController_hentAlle_loggetInn() {
         List<Konto> konti = new ArrayList<>();
@@ -59,7 +60,6 @@ public class EnhetstestAdminKontoController {
 
         assertEquals(konti, resultat);
 }
-    // Ida og Sofia: Vi tror denne også er riktig
     @Test
     public void hentAlle_IkkeLoggetInn() {
 
@@ -70,24 +70,88 @@ public class EnhetstestAdminKontoController {
         assertNull(resultat);
     }
 
-    // Denne prøvde vi oss på (Ida og Sofia), men dette er feil:(
-  /*  @Test
+    @Test
     public void registrerKonto_loggetInn() {
 
-        // arrange
-        Konto enKonto = new Konto();
+        Konto enKonto = new Konto("105010123456", "12345678901",
+                1000, "Lønnskonto", "NOK", null);
 
-        Mockito.when(sjekk.loggetInn()).thenReturn("12345678901");
+        Mockito.when(sjekk.loggetInn()).thenReturn("01010110523");
 
-        Mockito.when(repository.registrerKonto(anyString(), anyString())).thenReturn(enKonto);
+        Mockito.when(repository.registrerKonto(enKonto)).thenReturn("OK");
 
-        // act
-        Kunde resultat = adminKontoController.registrerKonto(@RequestBody);
+        String resultat = adminKontoController.registrerKonto(enKonto);
 
-        // assert
-        assertEquals(enKonto, resultat);
-    }*/
+        assertEquals("OK", resultat);
+    }
+
+    @Test
+    public void registrerKonto_ikkeLoggetInn() {
+
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        String resultat = adminKontoController.registrerKonto(null);
+
+        assertEquals("Ikke innlogget", resultat);
+    }
+
+    @Test
+    public void endreKonto_loggetInn() {
+
+        Konto enKonto = new Konto("105010123456", "12345678901",
+                1000, "Lønnskonto", "NOK", null);
 
 
+        Mockito.when(sjekk.loggetInn()).thenReturn("01010110522");
+
+        Mockito.when(repository.endreKonto(enKonto)).thenReturn("OK");
+
+        String resultat = adminKontoController.endreKonto(enKonto);
+
+        assertEquals("OK", resultat);
+
+
+    }
+
+
+    @Test
+    public void endreKonto_ikkeLoggetInn() {
+
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        String resultat = adminKontoController.endreKonto(null);
+
+        assertEquals("Ikke innlogget", resultat);
+
+    }
+
+
+
+    @Test
+    public void slettKonto_loggetInn() {
+
+        Konto enKonto = new Konto("105010123456", "12345678901",
+                1000, "Lønnskonto", "NOK", null);
+
+        Mockito.when(sjekk.loggetInn()).thenReturn("105010123456");
+
+        Mockito.when(repository.slettKonto(anyString())).thenReturn("OK");
+
+        String resultat = adminKontoController.slettKonto("12345678901");
+
+        assertEquals("OK", resultat);
+
+    }
+
+
+    @Test
+    public void slettKonto_ikkeLoggetInn() {
+        when(sjekk.loggetInn()).thenReturn(null);
+
+        String resultat = adminKontoController.slettKonto(null);
+
+        assertEquals("Ikke innlogget", resultat);
+
+    }
 
 }

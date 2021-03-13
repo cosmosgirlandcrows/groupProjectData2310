@@ -6,9 +6,9 @@ import oslomet.testing.DAL.AdminRepository;
 import oslomet.testing.Models.Konto;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
+import javax.sql.DataSource;
 import java.util.List;
 
-//Floyd does this
 
 @RestController
 @RequestMapping("/adminKonto")
@@ -54,5 +54,13 @@ public class AdminKontoController {
            return repository.slettKonto(kontonummer);
         }
         return "Ikke innlogget";
+    }
+
+    @Autowired
+    private DataSource dataSource;
+
+    @GetMapping("/initDB")
+    public String initDB(){
+        return repository.initDB(dataSource);
     }
 }

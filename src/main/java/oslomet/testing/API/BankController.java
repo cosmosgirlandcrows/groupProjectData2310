@@ -11,6 +11,7 @@ import oslomet.testing.Models.Kunde;
 import oslomet.testing.Models.Transaksjon;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 @RestController
@@ -51,7 +52,7 @@ public class BankController {
     }
 
     @PostMapping("/registrerBetaling")
-    public String registrerBetaling(@RequestBody Transaksjon betaling) {
+    public String registrerBetaling(Transaksjon betaling) {
         String personnummer = sjekk.loggetInn();
         if (personnummer!=null) {
             return repository.registrerBetaling(betaling);
