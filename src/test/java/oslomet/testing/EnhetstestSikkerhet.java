@@ -14,12 +14,21 @@ import oslomet.testing.DAL.BankRepository;
 import oslomet.testing.Models.Kunde;
 import oslomet.testing.Sikkerhet.Sikkerhet;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+
+import org.springframework.mock.web.MockHttpSession;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EnhetstestSikkerhet {
@@ -29,6 +38,9 @@ public class EnhetstestSikkerhet {
 
     @Mock
     private BankRepository repository;
+
+    @Mock
+    private MockHttpSession session;
 
     @Test
     public void testsjekkLoggInn() {
@@ -44,18 +56,6 @@ public class EnhetstestSikkerhet {
 
     }
 
-    //How do I mock a https session?
-    @Test
-    public void testloggUt(){
-
-        // arrange
-
-        // act
-
-        // assert
-
-
-    }
 
     @Test
     public void testloggInnAdmin(){
