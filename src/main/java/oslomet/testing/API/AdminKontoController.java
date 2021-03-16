@@ -9,7 +9,6 @@ import oslomet.testing.Sikkerhet.Sikkerhet;
 import javax.sql.DataSource;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/adminKonto")
 public class AdminKontoController {

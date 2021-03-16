@@ -39,7 +39,7 @@ public class AdminRepository {
             etPostSted = db.queryForObject(sql, Integer.class, kunde.getPostnr());
         }
         catch (Exception e){
-            return "Feil";
+            return "Feil" + e;
         }
         if(etPostSted == 0)
         {
@@ -74,7 +74,7 @@ public class AdminRepository {
             etPostSted = db.queryForObject(sql, Integer.class, kunde.getPostnr());
         }
         catch(Exception e){
-            return "Feil";
+            return "Feil i postnr" + e;
         }
         if(etPostSted == 0)
         {
@@ -84,7 +84,7 @@ public class AdminRepository {
                 db.update(sql, kunde.getPostnr(), kunde.getPoststed());
             }
             catch(Exception e){
-                return "Feil";
+                return "Finner ikke postnr";
             }
         }
         try{
@@ -94,7 +94,7 @@ public class AdminRepository {
                     kunde.getAdresse(),kunde.getPostnr(),kunde.getTelefonnr(),kunde.getPassord());
         }
         catch(Exception e){
-            return "Feil";
+            return "Feil ved lagring";
         }
         return "OK";
     }
@@ -105,7 +105,7 @@ public class AdminRepository {
             db.update(sql,personnummer);
         }
         catch(Exception e){
-            return "Feil";
+            return "Feil ved sletting av kunde";
         }
         return "OK";
     }
