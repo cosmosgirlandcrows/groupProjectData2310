@@ -22,7 +22,7 @@ public class BankController {
 
     @Autowired
     Sikkerhet sjekk;
-
+//Floyd
     @GetMapping("/hentTransaksjoner")
     public Konto hentTransaksjoner(String kontoNr, String fraDato, String tilDato) {
          String personnummer = sjekk.loggetInn();
@@ -32,7 +32,7 @@ public class BankController {
         return null;
     }
 
-
+//Floyd
     @GetMapping("/hentKonti")
     public List<Konto> hentKonti() {
         String personnummer = sjekk.loggetInn();
@@ -41,7 +41,7 @@ public class BankController {
         }
         return null;
     }
-
+//Floyd
     @GetMapping("/hentSaldi")
     public List<Konto> hentSaldi() {
         String personnummer = sjekk.loggetInn();
@@ -50,7 +50,7 @@ public class BankController {
         }
         return null;
     }
-
+//Floyd
     @PostMapping("/registrerBetaling")
     public String registrerBetaling(Transaksjon betaling) {
         String personnummer = sjekk.loggetInn();
@@ -60,7 +60,7 @@ public class BankController {
         return null;
     }
 
-
+//Sofia
     @GetMapping("/hentBetalinger")
     public List<Transaksjon> hentBetalinger() {
         String personnummer = sjekk.loggetInn();
@@ -70,6 +70,7 @@ public class BankController {
         return null;
     }
 
+    //Sofia
     @GetMapping("/utforBetaling")
     public List<Transaksjon> utforBetaling(int txID) {
         String personnummer = sjekk.loggetInn();
@@ -80,7 +81,7 @@ public class BankController {
         }
         return null;
     }
-
+    //Sofia
     @GetMapping("/hentKundeInfo")
     public Kunde hentKundeInfo() {
         String personnummer = sjekk.loggetInn();
@@ -90,7 +91,7 @@ public class BankController {
         }
         return null;
     }
-
+    //Sofia
     @PostMapping("/endreKundeInfo")
     public String endre(Kunde innKunde) {
         String personnummer = sjekk.loggetInn();
