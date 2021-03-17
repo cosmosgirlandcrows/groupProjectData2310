@@ -102,7 +102,10 @@ public class AdminRepository {
     public String slettKunde(String personnummer)  {
         try{
             String sql = "Delete From Kunde Where Personnummer = ?";
-            db.update(sql,personnummer);
+            int temp = db.update(sql,personnummer);
+            if (temp == 0) {
+                return "Feil. Kunden finnes ikke";
+            }
         }
         catch(Exception e){
             return "Feil ved sletting av kunde";
