@@ -22,6 +22,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyObject;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -74,14 +75,23 @@ public class EnhetstestSikkerhet {
         assertEquals("Ikke logget inn", loginfailCheck);
 
     }
-
-    //idk how to test things that dont return strings, this one returns a session getattribute change so idk how to test for that
     @Test
     public void testloggetInn(){
 
         // arrange
 
+        String personNummer = "12345678901";
+
+        session.setAttribute("Innlogget", personNummer);
+
+        when(sjekk.loggetInn()).thenReturn("Innlogget");
+
+
+
+        String loggetInnCheck = sjekk.loggetInn();
         // act
+
+        assertEquals("Innlogget", loggetInnCheck);
 
         // assert
 
