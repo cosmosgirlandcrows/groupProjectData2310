@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.core.ReactiveAdapterRegistry;
 import oslomet.testing.API.AdminKundeController;
 import oslomet.testing.DAL.AdminRepository;
 import oslomet.testing.DAL.BankRepository;
@@ -96,4 +97,22 @@ public class EnhetstestSikkerhet {
         // assert
 
     }
+
+    @Test
+    public void testLoggUt(){
+
+        String personNummer = "12345678901";
+
+        session.setAttribute("Innlogget", personNummer);
+
+        sjekk.loggUt();
+
+
+        assertNull(session.getAttribute("Innlogget"));
+
+
+
+
+    }
+
 }
