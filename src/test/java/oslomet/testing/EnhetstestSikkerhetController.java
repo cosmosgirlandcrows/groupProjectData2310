@@ -33,7 +33,7 @@ import org.springframework.mock.web.MockHttpSession;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EnhetstestSikkerhet {
+public class EnhetstestSikkerhetController {
 
     @Mock
     private Sikkerhet sjekk;
